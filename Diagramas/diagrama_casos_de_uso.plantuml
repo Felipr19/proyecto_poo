@@ -1,0 +1,23 @@
+@startuml Diagrama de Casos de Uso
+
+title Diagrama de Casos de Uso - Juego de Plataformas
+
+actor Jugador as "Jugador"
+
+rectangle "Sistema de Juego" {
+  usecase "Iniciar Juego" as UC1
+  usecase "Controlar Personaje" as UC2
+  usecase "Interactuar con Enemigos" as UC3
+  usecase "Recoger Objetos" as UC4
+  usecase "Condición de Victoria" as UC5
+  usecase "Visualizar la Barra de Vida" as UC6
+}
+
+Jugador --> UC1 : Inicia el juego
+Jugador --> UC2 : Controla el personaje
+Jugador --> UC3 : Interactúa con enemigos
+Jugador --> UC4 : Recoge objetos
+UC3 --> UC5 : Condición de Victoria
+UC6 --> Jugador : Muestra la vida
+
+@enduml

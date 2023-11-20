@@ -1,0 +1,61 @@
+@startuml Diagrama
+
+class InterfazGrafica {
+  // Atributos y métodos de la Interfaz Gráfica
+}
+
+class ItemPoder {
+  // Atributos y métodos específicos de ItemPoder
+}
+
+class Poder {
+  // Atributos y métodos específicos de Poder
+}
+
+class Personaje {
+  // Atributos y métodos específicos de Personaje
+}
+
+class Caracter {
+  HP
+  X
+  y
+  sprite
+  velocidad
+
+  update()
+}
+
+class CaracterGrafico {
+  sprite
+
+  animar()
+  getframe()
+
+}
+
+class Enemigos {
+  // Atributos y métodos específicos de Enemigo
+}
+
+class Bloque {
+}
+
+
+
+InterfazGrafica *-- ItemPoder
+ItemPoder --|> Poder
+Personaje --|> Caracter
+InterfazGrafica *-- CaracterGrafico
+InterfazGrafica *-- ObstaculosGraficos
+
+Enemigos --|> Caracter
+Enemigo1 --|> Enemigos
+Enemigo2 --|> Enemigos
+Enemigo3 --|> Enemigos
+
+CaracterGrafico --|> Caracter
+Personaje -> ItemPoder
+
+
+@enduml

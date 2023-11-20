@@ -1,0 +1,46 @@
+@startuml Diagramas
+
+title Diagrama de Secuencia - Juego de Plataformas 2D
+
+actor Jugador
+participant "Juego" as Juego
+participant "Personaje Principal" as Personaje
+participant "Enemigo" as Enemigo
+participant "Obstáculo" as Obstáculo
+participant "Poder" as Poder
+participant "Interfaz Gráfica" as Interfaz
+
+Jugador -> Juego: Inicia el juego
+activate Juego
+
+Juego -> Personaje: Carga al personaje
+activate Personaje
+
+Jugador -> Personaje: Controla el personaje (saltar, mover)
+Jugador -> Juego: Interactúa con el juego
+
+Juego -> Enemigo: Genera enemigos
+activate Enemigo
+Juego -> Obstáculo: Coloca obstáculos
+activate Obstáculo
+Juego -> Poder: Coloca objetos para recoger
+activate Poder
+
+Personaje -> Enemigo: Interactúa con enemigos
+Personaje -> Obstáculo: Colisiona con obstáculos
+Personaje -> Poder: Recoge poder
+
+Juego -> Interfaz: Actualiza la interfaz gráfica
+activate Interfaz
+Interfaz --> Jugador: Muestra la puntuación y el estado del juego
+
+
+
+deactivate Juego
+deactivate Personaje
+deactivate Enemigo
+deactivate Obstáculo
+deactivate Poder
+deactivate Interfaz
+
+@enduml

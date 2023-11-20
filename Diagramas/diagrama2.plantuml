@@ -1,0 +1,72 @@
+@startuml Diagrama
+
+class InterfazGrafica {
+    +cargarMapa(animarEnemigo, animarPersonaje, generarPoder, generarObstaculos)
+}
+
+
+class AnimarEnemigos {
+    +animarEnemigo(tomar_posiciones_enemigos)
+}
+
+class AnimarPersonajePrincipal {
+    +animarPersonaje()
+    
+}
+
+note left of AnimarPersonajePrincipal : "animarPersonaje() se encarga del movimiento si detecta que baja su vida se activa una funcion en PersonajePrincipal"
+
+class PersonajePrincipal {
+    +vida:int
+
+    +calcularVida()
+    +tomarPoder(Poder)
+}
+
+class ItemPoder {
+    +generarPoder()
+}
+
+class Poder {
+}
+
+class Enemigo {
+    +vida:int
+    +tomar_posiciones_enemigos: cls_list
+
+    +movimiento()
+    +calcularVida()
+    +calculo_de_vida_enemigo()
+
+}
+note left of Enemigo : "El metodo tomar_posiciones_enemigos esta bien implementado?"
+
+class Obstaculos {
+    +generarObstaculos()
+}
+
+
+class Enemigo1 {
+
+}
+
+class Enemigo2 {
+}
+
+class Enemigo3 {
+}
+
+InterfazGrafica *-down-> AnimarEnemigos
+InterfazGrafica *-down-> AnimarPersonajePrincipal
+InterfazGrafica *-down-> ItemPoder
+InterfazGrafica *-down-> Obstaculos
+AnimarEnemigos -down-> Enemigo
+AnimarPersonajePrincipal -down-> PersonajePrincipal
+ItemPoder -down-> Poder
+PersonajePrincipal -down-> Poder
+
+Enemigo <|- Enemigo1 
+Enemigo <|- Enemigo2
+Enemigo <|- Enemigo3
+
+@enduml
