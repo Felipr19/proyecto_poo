@@ -41,8 +41,8 @@ class Enemigo {
 }
 note left of Enemigo : "El metodo tomar_posiciones_enemigos esta bien implementado?"
 
-class Obstaculos {
-    +generarObstaculos()
+class Bloque {
+    +generarBloque()
 }
 
 
@@ -55,11 +55,14 @@ class Enemigo2 {
 
 class Enemigo3 {
 }
-
+class Config {
+    //Set de la ventana donde se crea el mapa
+}
 InterfazGrafica *-down-> AnimarEnemigos
 InterfazGrafica *-down-> AnimarPersonajePrincipal
 InterfazGrafica *-down-> ItemPoder
-InterfazGrafica *-down-> Obstaculos
+InterfazGrafica *-down-> Bloque
+InterfazGrafica *-- Config
 AnimarEnemigos -down-> Enemigo
 AnimarPersonajePrincipal -down-> PersonajePrincipal
 ItemPoder -down-> Poder
@@ -70,3 +73,4 @@ Enemigo <|- Enemigo2
 Enemigo <|- Enemigo3
 
 @enduml
+
