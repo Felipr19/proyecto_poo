@@ -12,8 +12,8 @@ class Poder {
   // Atributos y métodos específicos de Poder
 }
 
-class Personaje {
-  // Atributos y métodos específicos de Personaje
+class Jugador {
+  // Atributos y métodos específicos de Jugador
 }
 
 class Caracter {
@@ -41,21 +41,25 @@ class Enemigos {
 class Bloque {
 }
 
+class Config{ 
+  //Setea la venta del mapa
+}
+
 
 
 InterfazGrafica *-- ItemPoder
 ItemPoder --|> Poder
-Personaje --|> Caracter
+Jugador --|> Caracter
 InterfazGrafica *-- CaracterGrafico
-InterfazGrafica *-- ObstaculosGraficos
-
+InterfazGrafica *-- BloqueGrafico
+InterfazGrafica *-- Config
 Enemigos --|> Caracter
 Enemigo1 --|> Enemigos
 Enemigo2 --|> Enemigos
 Enemigo3 --|> Enemigos
 
 CaracterGrafico --|> Caracter
-Personaje -> ItemPoder
+Jugador -> ItemPoder
 
 
 @enduml
