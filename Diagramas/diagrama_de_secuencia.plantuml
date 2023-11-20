@@ -6,9 +6,12 @@ actor Jugador
 participant "Juego" as Juego
 participant "Personaje Principal" as Personaje
 participant "Enemigo" as Enemigo
-participant "Obstáculo" as Obstáculo
+participant "Bloque" as Bloque
 participant "Poder" as Poder
+participant "Config" as Config
 participant "Interfaz Gráfica" as Interfaz
+participant "Main" as Main
+
 
 Jugador -> Juego: Inicia el juego
 activate Juego
@@ -21,26 +24,30 @@ Jugador -> Juego: Interactúa con el juego
 
 Juego -> Enemigo: Genera enemigos
 activate Enemigo
-Juego -> Obstáculo: Coloca obstáculos
-activate Obstáculo
+Juego -> Bloque: Coloca Bloques
+activate Bloque
 Juego -> Poder: Coloca objetos para recoger
 activate Poder
 
 Personaje -> Enemigo: Interactúa con enemigos
-Personaje -> Obstáculo: Colisiona con obstáculos
+Personaje -> Bloque: Colisiona con Bloques
 Personaje -> Poder: Recoge poder
 
 Juego -> Interfaz: Actualiza la interfaz gráfica
 activate Interfaz
 Interfaz --> Jugador: Muestra la puntuación y el estado del juego
 
+Config -> Interfaz: Setea la ventana donde se crea el mapa
+
+Juego -> Main: ejecuta el programa
+activate Main
 
 
 deactivate Juego
 deactivate Personaje
 deactivate Enemigo
-deactivate Obstáculo
+deactivate Bloque
 deactivate Poder
 deactivate Interfaz
-
+deactivate Main
 @enduml
