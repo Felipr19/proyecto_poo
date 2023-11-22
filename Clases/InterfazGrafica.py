@@ -25,13 +25,30 @@ class InterfazGrafica:
                     self.bloques.add(bloque)
                 
                 if col == "P":
-                    jugador = Jugador((x,y),6,'P1','sprite',2)
+                    jugador = Jugador((x,y),VELOCIDAD,'P1','sprite',2)
                     self.jugador.add(jugador)
 
+    def camara_x(self):
+
+        jugador = self.jugador.sprite
+        jugador_x = jugador.rect.centerx
+        direction_x = jugador.direction.x
+
+        if jugador_x < W_WIDTH/4 and direction_x < 0:
+            self.mapa_var = VELOCIDAD
+            jugador.velocidad = 0
+        elif jugador_x > W_WIDTH - W_WIDTH/4 and direction_x > 0:
+            self.mapa_var = -VELOCIDAD
+            jugador.velocidad = 0
+        else:
+            self.mapa_var = 0
+            jugador.velocidad = VELOCIDAD
 
     def ejecutar(self):
+
         self.bloques.update(self.mapa_var)
         self.bloques.draw(self.display_surface)
 
         self.jugador.update()
         self.jugador.draw(self.display_surface)
+        self.camara_x()
