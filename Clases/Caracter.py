@@ -16,8 +16,8 @@ class Caracter(pygame.sprite.Sprite):
         
         #moviemiento 
         self.velocidad = velocidad
-        self.direction = pygame.math.Vector2(0,0)
-        self.gravedad = 1
+        self.direction = pygame.math.Vector2(0.0,0.0)
+        self.gravedad = 0
         self.vel_salto = -16
 
     def mostrar_estado(self):
@@ -25,9 +25,11 @@ class Caracter(pygame.sprite.Sprite):
 
     def aplly_gravedad(self):
         self.direction.y += self.gravedad
-        self.rect.x += self.direction.y
+        self.rect.y += self.direction.y
 
+    def jump(self):
+        self.direction.y = self.vel_salto
+        
     def update(self):
-        self.aplly_gravedad()
-        self.rect.x += self.direction.x * self.velocidad
+        pass
        
