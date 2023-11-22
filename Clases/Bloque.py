@@ -1,5 +1,7 @@
 import pygame
 
+#Clase para la "superficie" del nivel
+
 class Bloque(pygame.sprite.Sprite):
     def __init__(self,pos,size):
         super().__init__()

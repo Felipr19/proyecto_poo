@@ -14,7 +14,12 @@ class Jugador(Caracter):
         else:
             self.direction.x = 0
 
+        if keys[pygame.K_UP]:
+            self.direction.y = 1
+        else:
+            self.direction.y = 0
+
     def update(self):
         self.get_input()
-        self.rect.x += self.direction.x * self.velocidad
+        self.rect.x += self.direction.x * self.velocidad 
 

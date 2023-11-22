@@ -10,6 +10,8 @@ class InterfazGrafica:
         self.setup_mapa(mapa)
         self.mapa_var = 0
 
+    #seting del mapa --> crea bloques y jugador
+
     def setup_mapa(self,layout):                
         self.bloques = pygame.sprite.Group()
         self.jugador = pygame.sprite.GroupSingle()
@@ -27,6 +29,8 @@ class InterfazGrafica:
                 if col == "P":
                     jugador = Jugador((x,y),VELOCIDAD,'P1','sprite',2)
                     self.jugador.add(jugador)
+
+    #despalazamiento de la camara 
 
     def camara_x(self):
 
