@@ -53,6 +53,11 @@ class InterfazGrafica:
         self.bloques.update(self.mapa_var)
         self.bloques.draw(self.display_surface)
 
+        font = pygame.font.Font(None, 36)
+        text = font.render(f"Valor de x: {self.jugador.sprite.gravedad   }", True, 'white')
+        self.display_surface.blit(text, (10, 10))
+
+
         self.jugador.update()
         self.jugador.draw(self.display_surface)
         self.camara_x()
