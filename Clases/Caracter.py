@@ -13,23 +13,24 @@ class Caracter(pygame.sprite.Sprite):
         self.image = pygame.Surface((32,64))
         self.image.fill('red')
         self.rect = self.image.get_rect(topleft = pos)
-        
+
         #moviemiento 
         self.velocidad = velocidad
-        self.direction = pygame.math.Vector2(0.0,0.0)
-        self.gravedad = 0
+        self.direction = pygame.math.Vector2(0,0)
+        self.gravedad = 0.8
         self.vel_salto = -16
 
     def mostrar_estado(self):
         print(f"{self.nombre}: Salud={self.salud}, Velocidad={self.velocidad}")
 
     def aplly_gravedad(self):
-        self.direction.y += self.gravedad
+        if self.direction.y < 12:
+            self.direction.y += self.gravedad
         self.rect.y += self.direction.y
 
     def jump(self):
         self.direction.y = self.vel_salto
-        
+
     def update(self):
         pass
        

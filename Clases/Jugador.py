@@ -19,7 +19,5 @@ class Jugador(Caracter):
 
     def update(self):
         self.get_input()
-        self.rect.x += self.direction.x * self.velocidad 
-        self.aplly_gravedad()
 
 

@@ -48,9 +48,37 @@ class InterfazGrafica:
             self.mapa_var = 0
             jugador.velocidad = VELOCIDAD
 
+    def horizontal_collision(self):
+
+        jugador = self.jugador.sprite
+        jugador.rect.x += jugador.direction.x * jugador.velocidad
+
+        for sprite in self.bloques.sprites():
+            if sprite.rect.colliderect(jugador.rect):
+                if jugador.direction.x > 0:
+                    jugador.rect.right = sprite.rect.left
+                elif jugador.direction.x < 0:
+                    jugador.rect.left = sprite.rect.right
+
+    def vertical_collision(self):
+        
+        jugador = self.jugador.sprite
+        jugador.aplly_gravedad()
+
+        for sprite in self.bloques.sprites():
+                if sprite.rect.colliderect(jugador.rect):
+                    if jugador.direction.y > 0:
+                        jugador.rect.bottom = sprite.rect.top
+                    elif jugador.direction.y < 0:
+                        jugador.rect.top = sprite.rect.bottom
+                        jugador.direction.y = 0
+
+
+
     def ejecutar(self):
 
         self.bloques.update(self.mapa_var)
+        self.camara_x()
         self.bloques.draw(self.display_surface)
 
         font = pygame.font.Font(None, 36)
@@ -59,5 +87,6 @@ class InterfazGrafica:
 
 
         self.jugador.update()
+        self.horizontal_collision()
+        self.vertical_collision()
         self.jugador.draw(self.display_surface)
-        self.camara_x()
