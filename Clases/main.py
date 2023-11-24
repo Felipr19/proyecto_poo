@@ -4,7 +4,7 @@ from InterfazGrafica import *
 
 #setup de pygame
 pygame.init()
-screen = pygame.display.set_mode((W_WIDTH,W_HEIGTH))
+screen = pygame.display.set_mode((W_WIDTH,W_HEIGHT))
 reloj = pygame.time.Clock()
 mapa = InterfazGrafica(mapa,screen)
 

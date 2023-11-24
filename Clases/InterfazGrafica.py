@@ -1,5 +1,4 @@
 import pygame
-from CaracterGrafico import *
 from Jugador import *
 from config import *
 from Bloque import *

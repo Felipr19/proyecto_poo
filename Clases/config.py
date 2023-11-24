@@ -14,11 +14,15 @@ mapa =[
 
 #presets de los caracteres
 
+P_WIDTH = 30
+P_HEIGHT = 37.8
+
 VELOCIDAD = 8
+
 
 #presets de los bloques
 
 bloque_size = 64
 W_WIDTH = 1200
-W_HEIGTH = len(mapa) * bloque_size
+W_HEIGHT = len(mapa) * bloque_size
 

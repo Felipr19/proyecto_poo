@@ -10,8 +10,10 @@ class Caracter(pygame.sprite.Sprite):
         self.salud = salud
 
         #parte grafica y hitbox
-        self.image = pygame.Surface((32,64))
-        self.image.fill('red')
+        self.frame_index = 0
+        self.animation_speed =0.15
+        self.import_assets()
+        self.image = self.animations['idle'][self.frame_index]
         self.rect = self.image.get_rect(topleft = pos)
 
         #moviemiento 
@@ -20,8 +22,8 @@ class Caracter(pygame.sprite.Sprite):
         self.gravedad = 0.8
         self.vel_salto = -16
 
-    def mostrar_estado(self):
-        print(f"{self.nombre}: Salud={self.salud}, Velocidad={self.velocidad}")
+    def import_assets(self):
+        pass
 
     def aplly_gravedad(self):
         if self.direction.y < 12:

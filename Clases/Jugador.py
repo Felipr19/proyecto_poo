@@ -1,4 +1,5 @@
 from Caracter import *
+from support import import_folder
 import pygame
 
 
@@ -16,6 +17,15 @@ class Jugador(Caracter):
 
         if keys[pygame.K_UP]:
             self.jump()
+
+    def import_assets(self):
+        
+        player_path = 'Assets\Player\\'
+        self.animations = {'idle':[],'run':[],'jump':[],'fall':[]}
+
+        for animation in self.animations.keys():
+            full_path = player_path + animation
+            self.animations[animation] = import_folder(full_path)
 
     def update(self):
         self.get_input()
