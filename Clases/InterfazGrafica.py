@@ -8,6 +8,7 @@ class InterfazGrafica:
         self.display_surface = surface
         self.setup_mapa(mapa)
         self.mapa_var = 0
+        self.cam_mov = 1
 
     #seting del mapa --> crea bloques y jugador
 
@@ -36,21 +37,23 @@ class InterfazGrafica:
         jugador = self.jugador.sprite
         jugador_x = jugador.rect.centerx
         direction_x = jugador.direction.x
+        
 
         if jugador_x < W_WIDTH/4 and direction_x < 0:
-            self.mapa_var = VELOCIDAD
-            jugador.velocidad = 0
+            self.mapa_var = jugador.velocidad
+            self.cam_mov = 0
         elif jugador_x > W_WIDTH - W_WIDTH/4 and direction_x > 0:
-            self.mapa_var = -VELOCIDAD
-            jugador.velocidad = 0
+            self.mapa_var = -jugador.velocidad
+            self.cam_mov = 0
         else:
             self.mapa_var = 0
-            jugador.velocidad = VELOCIDAD
+            self.cam_mov = 1
+
 
     def horizontal_collision(self):
 
         jugador = self.jugador.sprite
-        jugador.rect.x += jugador.direction.x * jugador.velocidad
+        jugador.rect.x += jugador.direction.x * jugador.velocidad * self.cam_mov
 
         for sprite in self.bloques.sprites():
             if sprite.rect.colliderect(jugador.rect):
@@ -68,10 +71,17 @@ class InterfazGrafica:
                 if sprite.rect.colliderect(jugador.rect):
                     if jugador.direction.y > 0:
                         jugador.rect.bottom = sprite.rect.top
+                        jugador.direction.y = 0
+                        jugador.on_ground = True
                     elif jugador.direction.y < 0:
                         jugador.rect.top = sprite.rect.bottom
                         jugador.direction.y = 0
+                        jugador.on_ceiling = True
 
+        if jugador.on_ground and jugador.direction.y < 0 or jugador.direction.y >1:
+            jugador.on_ground = False
+        if jugador.on_ceiling and jugador.direction.y > 0:
+            jugador.on_ceiling = False
 
 
     def ejecutar(self):
@@ -81,7 +91,7 @@ class InterfazGrafica:
         self.bloques.draw(self.display_surface)
 
         font = pygame.font.Font(None, 36)
-        text = font.render(f"Valor de x: {self.jugador.sprite.gravedad   }", True, 'white')
+        text = font.render(f"Valor de x: {self.jugador.sprite.animation_speed }", True, 'white')
         self.display_surface.blit(text, (10, 10))
 
 

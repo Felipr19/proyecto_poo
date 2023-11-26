@@ -8,14 +8,16 @@ screen = pygame.display.set_mode((W_WIDTH,W_HEIGHT))
 reloj = pygame.time.Clock()
 mapa = InterfazGrafica(mapa,screen)
 
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
-    screen.fill('black')
+    screen.fill('red')
     mapa.ejecutar()
 
     pygame.display.update()
     reloj.tick(60)
+
